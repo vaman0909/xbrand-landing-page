@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modern Landing Page</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #111111;
+      color: #f5f5f5;
+      overflow-x: hidden;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: rgba(17, 17, 17, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      z-index: 1000;
+    }
+
+    nav {
+      width: 90%;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+    }
+
+    .logo {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #facc15;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      transition: 0.3s ease;
+      color: #e5e5e5;
+    }
+
+    .nav-links a:hover {
+      color: #facc15;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 120px 10% 60px;
+      background: linear-gradient(135deg, #111111, #2b2b2b);
+    }
+
+    .hero-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 50px;
+      align-items: center;
+      width: 100%;
+    }
+
+    .hero-text h1 {
+      font-size: 4rem;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .hero-text h1 span {
+      color: #facc15;
+    }
+
+    .hero-text p {
+      color: #cfcfcf;
+      margin-bottom: 30px;
+      font-size: 1.05rem;
+      max-width: 550px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 30px;
+      border-radius: 40px;
+      font-weight: 600;
+      transition: 0.3s ease;
+      display: inline-block;
+    }
+
+    .primary-btn {
+      background: #facc15;
+      color: #111111;
+    }
+
+    .primary-btn:hover {
+      background: #eab308;
+      transform: translateY(-3px);
+    }
+
+    .secondary-btn {
+      border: 2px solid #facc15;
+      color: #facc15;
+    }
+
+    .secondary-btn:hover {
+      background: #facc15;
+      color: #111111;
+    }
+
+    .hero-image img {
+      width: 100%;
+      border-radius: 24px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    }
+
+    section {
+      padding: 100px 10%;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #facc15;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #cfcfcf;
+      max-width: 700px;
+      margin: auto auto 60px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .feature-card {
+      background: #1c1c1c;
+      padding: 35px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      border-color: #facc15;
+    }
+
+    .feature-card h3 {
+      margin-bottom: 15px;
+      color: #facc15;
+    }
+
+    .feature-card p {
+      color: #cfcfcf;
+      line-height: 1.7;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      align-items: center;
+    }
+
+    .about img {
+      width: 100%;
+      border-radius: 20px;
+    }
+
+    .about-text h2 {
+      font-size: 2.5rem;
+      color: #facc15;
+      margin-bottom: 20px;
+    }
+
+    .about-text p {
+      color: #cfcfcf;
+      margin-bottom: 18px;
+      line-height: 1.8;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+
+    .stat-box {
+      background: #1c1c1c;
+      padding: 25px;
+      border-radius: 18px;
+      text-align: center;
+    }
+
+    .stat-box h3 {
+      color: #facc15;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .stat-box p {
+      color: #cfcfcf;
+    }
+
+    .contact {
+      text-align: center;
+      background: linear-gradient(135deg, #1a1a1a, #252525);
+      border-radius: 30px;
+      padding: 70px 30px;
+    }
+
+    .contact h2 {
+      color: #facc15;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .contact p {
+      color: #d4d4d4;
+      max-width: 650px;
+      margin: auto auto 30px;
+      line-height: 1.8;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: #9e9e9e;
+      background: #111111;
+    }
+
+    @media (max-width: 768px) {
+      .hero-text h1 {
+        font-size: 2.8rem;
+      }
+
+      .nav-links {
+        gap: 15px;
+        font-size: 0.9rem;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="logo">BrandX</div>
+
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-container">
+
+      <div class="hero-text">
+        <h1>
+          Build Your <span>Digital Future</span>
+        </h1>
+
+        <p>
+          Create beautiful, modern, and responsive websites with a clean
+          user experience and professional design. This landing page project
+          demonstrates HTML and CSS layout skills, spacing, alignment,
+          sections, and responsive design.
+        </p>
+
+        <div class="buttons">
+          <a href="#features" class="btn primary-btn">Get Started</a>
+          <a href="#about" class="btn secondary-btn">Learn More</a>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop" alt="Modern Workspace">
+      </div>
+
+    </div>
+  </section>
+
+  <section id="features">
+    <h2 class="section-title">Our Features</h2>
+
+    <p class="section-subtitle">
+      A modern landing page requires proper alignment, responsive layouts,
+      creative sections, spacing, and visually balanced design.
+    </p>
+
+    <div class="features">
+
+      <div class="feature-card">
+        <h3>Responsive Design</h3>
+        <p>
+          Optimized layouts that adapt perfectly across desktop, tablet,
+          and mobile devices.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Modern UI</h3>
+        <p>
+          Clean interface using professional grey, black, and yellow color
+          combinations.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Fast Performance</h3>
+        <p>
+          Lightweight structure using only HTML and CSS for better loading
+          speed.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Creative Layout</h3>
+        <p>
+          Proper sections, columns, spacing, and typography to avoid overlap
+          and improve readability.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="about">
+
+    <div class="about">
+
+      <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200&auto=format&fit=crop" alt="Team Meeting">
+
+      <div class="about-text">
+        <h2>Why Choose Us?</h2>
+
+        <p>
+          This project showcases how to structure a professional landing page
+          using sections, grids, responsive columns, buttons, typography,
+          cards, and balanced spacing.
+        </p>
+
+        <p>
+          By combining HTML and CSS creatively, you can design attractive
+          user interfaces that are visually appealing and easy to navigate.
+        </p>
+
+        <div class="stats">
+          <div class="stat-box">
+            <h3>250+</h3>
+            <p>Projects</p>
+          </div>
+
+          <div class="stat-box">
+            <h3>98%</h3>
+            <p>Satisfaction</p>
+          </div>
+
+          <div class="stat-box">
+            <h3>24/7</h3>
+            <p>Support</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="contact" id="contact">
+      <h2>Start Your Journey Today</h2>
+
+      <p>
+        Create impressive landing pages using HTML and CSS while improving
+        your understanding of layouts, sections, alignments, colors,
+        responsiveness, and spacing.
+      </p>
+
+      <a href="#home" class="btn primary-btn">Back to Top</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 BrandX Landing Page | Designed with HTML & CSS</p>
+  </footer>
+
+</body>
+</html>
